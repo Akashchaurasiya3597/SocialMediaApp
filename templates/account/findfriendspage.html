@@ -1,0 +1,113 @@
+<html>
+<head>
+    <title>
+        Find Friends
+
+    </title>
+    {% include 'account/bootstrap.html' %}
+
+    <style>
+
+
+.card {
+    width: 400px;
+    border: none;
+    border-radius: 10px;
+    background-color: #5642c8
+}
+
+.stats {
+    background: #5642c8 !important;
+    color: #000 !important
+}
+
+.articles {
+    font-size: 10px;
+    color: #000000
+}
+
+.number1 {
+    font-weight: 500
+}
+
+.followers {
+    font-size: 10px;
+    color: #000000;
+}
+
+.number2 {
+    font-weight: 500
+}
+
+.rating {
+    font-size: 10px;
+    color: #000000;
+}
+
+.number3 {
+    font-weight: 500
+}
+    </style>
+</head>
+<body>
+{%  include 'account/base.html' %}
+
+<div class="container" style="padding: 20px">
+    <div class="row">
+
+        <div class="col">
+
+
+             <form  action="results" class="form-inline my-2 my-lg-0">
+      <input id="product" class="form-control mr-sm-2" name="user" type="text">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+        </div>
+        <div class="col">
+            {% for message in messages %}
+                <h3> No similar results for '{{message}}'</h3>
+            {% endfor %}
+        </div>
+
+    </div>
+
+<div class="row">
+    <div class="col">
+           {% for user in users %}
+
+<form action="/add-friend/{{ user.id }}">
+
+<div  class="container mt-5 d-flex justify-content-center">
+    <div  class="card p-3">
+        <div class="d-flex align-items-center">
+            {% if user.profile.image %}
+            <div class="image"> <img src="{{user.profile.user_image.url}}" class="img-rounded" width="50"> </div>
+            {% endif %}
+            <div class="ml-3 w-100">
+                <h4 class="mb-0 mt-0">{{ user.full_name }}
+
+                    <button style="float: right;" class="btn btn-success" title="submit">Add Connection</button>
+
+                </h4> <span>{{ user.phone_number }}</span>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>
+
+
+{% endfor %}
+
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<html>
+<head>
+    <title>register</title>
+    {% include 'account/bootstrap.html' %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="bootstrap/css/fontawesome.5.7.2.css">
+</head>
+<body>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: deepskyblue;
+    }
+    .user-card{
+        width: 350px;
+        margin-top: 150px;
+        margin-bottom: auto;
+        background: #74cfbf;
+        position: relative;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+        box-shadow: 0 0px 10px 0 blue, 0 0px 20px red,0 0px 30px deepskyblue, 0 0 40px black;
+        border-radius: 10px;
+    }
+    .form-container{
+        margin-top: 10px;
+    }
+    .input-group-text{
+        background: #f7ba5b;
+        color: white;
+    }
+    .input-group{
+        margin-top: 5px;
+    }
+    #msg1{
+        background-color: greenyellow;
+        color: white;
+        text-align: center;
+    }
+
+        input[type=text], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+        input[type=email], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+        input[type=password], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=number], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit1] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 7px 10px;
+  margin: 0px 0;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+</style>
+<div class="container" style="padding: 30px">
+    <h3>User Register</h3>
+  <div class="row">
+
+    <div class="col-sm">
+      <form method="POST">
+{% csrf_token %}
+    {{ form.as_p }}
+
+    <div class="d-flex justify-content-center login-container" style="margin-top: 10px">
+        <input class="btn btn-success" type="submit" value="Register Account">
+        <input class="btn btn-danger" type="reset" value="clear">
+    </div>
+    {{ form.errors }}
+            <div class="d-flex justify-content-center">
+                Already Have an Account? <a href="{% url 'login' %}" class="ml-3 text-white">Login</a>
+            </div>
+</form>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

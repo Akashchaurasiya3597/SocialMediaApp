@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Home</title>
+
+</head>
+<body>
+{% include 'account/base.html' %}
+
+<div class="container">
+ <h3>Post</h3>
+</div>
+    {% for post in postdata %}
+
+        <div class="container">
+
+  <div class="row">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+      <div class="card" style="width:400px;">
+    <img class="card-img-top" src="{{ post.image.url }}" alt="Card image" style="width:100%;height: 20%">
+    <div class="card-body">
+      <h4 class="card-title">{{ post.user.full_name }}({{ post.user.phone_number }})</h4>
+      <p class="card-text">{{ post.caption }} </p>
+        <p class="card-text">{{ post.created_date }}</p>
+
+    </div>
+  </div>
+  <br>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
+
+
+    {% endfor %}
+
+</body>
+</html>

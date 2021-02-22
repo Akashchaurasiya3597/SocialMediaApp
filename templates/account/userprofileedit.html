@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Edit profile</title>
+    {% include 'account/bootstrap.html' %}
+    <style>
+        input[type=text], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+        input[type=file], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+        input[type=number], select {
+  width: 100%;
+  padding: 6px 10px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid cornflowerblue;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+    </style>
+</head>
+<body>
+{% include 'account/base.html' %}
+
+
+
+
+<div class="container" style="padding: 20px">
+    <h3>Edit profile only once</h3>
+  <div class="row">
+
+    <div class="col-sm">
+      <form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+    {{ form.as_p }}
+ <div class="d-flex justify-content-center login-container" style="margin-top: 10px">
+
+                         <input class="btn btn-success" type="submit" value="Submit">
+                         <input class="btn btn-danger" type="reset" value="Clear">
+                    </div>
+</form>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
