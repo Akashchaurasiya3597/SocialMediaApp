@@ -87,7 +87,24 @@
             <div class="ml-3 w-100">
                 <h4 class="mb-0 mt-0">{{ user.full_name }}
 
-                    <button style="float: right;" class="btn btn-success" title="submit">Add Connection</button>
+                    {%  if friend_filter %}
+                        <button style="float: right;" class="btn btn-success" title="submit">Add Connection</button>
+                        {% for i in friend_filter %}
+
+                            {% if i.user2.phone_number == user.phone_number %}
+
+                    <button style="float: right;" class="btn btn-danger" title="submit" disabled>Connected</button>
+
+
+                            {% endif %}
+
+                         {% endfor %}
+
+
+
+                {% endif %}
+
+
 
                 </h4> <span>{{ user.phone_number }}</span>
 

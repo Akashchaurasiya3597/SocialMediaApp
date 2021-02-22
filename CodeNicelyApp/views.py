@@ -1,16 +1,14 @@
 import json
 from django.http import JsonResponse
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView, CreateView
 
-from .forms import UserChangeForm, UserStandardCreationForm, PostForm, EditProfileForm
+from .forms import UserStandardCreationForm, PostForm, EditProfileForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import User, Friend, Post, Profile
+from .models import User, Friend, Post
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_protect
 
@@ -100,8 +98,13 @@ def ResultsView(request):  # multiple search
     if request.method == 'GET':
         search = request.GET.get('user')
         user = request.user
-        friend_filter = Friend.objects.filter(
-            Q(user1=user) | Q(user2=user))
+        friend_filter = []
+        if Friend.objects.filter(Q(user1=user)).exists():
+            for x in Friend.objects.filter(Q(user1=user)):
+                friend_filter.append(x)
+        print(friend_filter)
+        for i in friend_filter:
+             print('user2', i.user2)
 
         if search:
             users = User.objects.filter(
@@ -154,7 +157,7 @@ def FriendListView(request):
     user = request.user
 
     friend_filter = Friend.objects.filter(
-        Q(user1=user) | Q(user2=user))
+        Q(user1=user) | Q(user2=user))[::-1]
 
     return render(request, 'account/friendListpage.html', {'friend_filter': friend_filter})
 
