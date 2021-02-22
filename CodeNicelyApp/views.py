@@ -129,7 +129,6 @@ def PostDataView(request):
         if form.is_valid():
             item_form_obj = form.save(commit=False)
             item_form_obj.user = user[0]
-            print('ssssssssssss', item_form_obj.user)
             item_form_obj.save()
             return HttpResponseRedirect(reverse('homepage'))
         else:
@@ -167,6 +166,5 @@ def autocomplete(request):
         titles = list()
         for search in qs:
             titles.append(search.phone_number)
-        # titles = [product.title for product in qs]
         return JsonResponse(titles, safe=False)
     return render(request, 'account/findfriendspage.html')

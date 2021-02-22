@@ -1,9 +1,6 @@
 from django.db import models
-from django.core.validators import RegexValidator
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
 from django.contrib.auth.models import PermissionsMixin
-#
-from django.urls import reverse
 
 
 # Create your models here.
@@ -75,23 +72,18 @@ class Post(models.Model):
         return self.caption
 
 
-
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_image = models.ImageField(upload_to='profile_pics')
     address = models.CharField(max_length=500)
     cover_photos = models.ImageField(upload_to='cover_pics')
 
-
     def __str__(self):
         return f'{self.user.full_name} Profile'
 
 
 class Friend(models.Model):
-    user1 = models.ForeignKey(User, on_delete=models.CASCADE,related_name='user1')  # who sent the request
+    user1 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user1')  # who sent the request
     user2 = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user2')  # who will receive the request
     status = models.CharField(max_length=20, default='connected')
     created_at = models.DateTimeField(auto_now_add=True)
-
-
