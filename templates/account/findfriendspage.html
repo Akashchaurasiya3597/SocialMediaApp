@@ -85,7 +85,7 @@
             <div class="image"> <img src="{{user.profile.user_image.url}}" class="img-rounded" width="50"> </div>
             {% endif %}
             <div class="ml-3 w-100">
-                <h4 class="mb-0 mt-0">{{ user.full_name }}
+                <h4 class="mb-0 mt-0">{{ user.full_name|truncatechars:6  }}
 
                     {%  if friend_filter %}
                         <button style="float: right;" class="btn btn-success" title="submit">Add Connection</button>
@@ -110,7 +110,10 @@
 
 
             </div>
+
         </div>
+        <div class="button mt-2 d-flex flex-row align-items-center"> <a href="/friend-profile/{{ user.id }}" class="btn btn-sm btn-outline-primary w-100">View Profile</a> </div>
+
     </div>
 </div>
 
