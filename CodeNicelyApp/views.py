@@ -104,7 +104,7 @@ def ResultsView(request):  # multiple search
                 friend_filter.append(x)
         print(friend_filter)
         for i in friend_filter:
-             print('user2', i.user2)
+            print('user2', i.user2)
 
         if search:
             users = User.objects.filter(
@@ -160,6 +160,13 @@ def FriendListView(request):
         Q(user1=user) | Q(user2=user))[::-1]
 
     return render(request, 'account/friendListpage.html', {'friend_filter': friend_filter})
+
+
+def FriendProfile(request,pk):
+
+    user = User.objects.get(id=pk)
+    context = {'user': user}
+    return render(request,'account/friendProfile.html', context)
 
 
 @login_required(login_url='login')

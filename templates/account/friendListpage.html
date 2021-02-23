@@ -21,7 +21,7 @@
                 <h4 class="mb-0 mt-0">{{ friend.user2.full_name }}</h4> <span>{{ friend.status }}</span>
                 <h6 class="mb-0 mt-0">{{ friend.user2.phone_number }}</h6> <span>{{ friend.created_at }}</span>
 
-                <div class="button mt-2 d-flex flex-row align-items-center"> <button class="btn btn-sm btn-outline-primary w-100">View Profile</button> </div>
+                <div class="button mt-2 d-flex flex-row align-items-center"> <a href="/friend-profile/{{ friend.user2.id }}" class="btn btn-sm btn-outline-primary w-100">View Profile</a> </div>
             </div>
         </div>
     </div>

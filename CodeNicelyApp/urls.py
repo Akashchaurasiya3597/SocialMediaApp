@@ -15,6 +15,7 @@ urlpatterns = [
     path('profile-edit',views.profileEditView,name='profile-edit'),
     path('friend-list',views.FriendListView,name='friend-list'),
     path('', views.autocomplete, name='autocomplete'),
+    path('friend-profile/<pk>',views.FriendProfile,name='friend-profile')
 
 
 
